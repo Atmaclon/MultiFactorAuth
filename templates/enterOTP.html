@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <body>
+        <div class="login-box">
+        <form action="/validateOTP" method="post">
+            <br><br>
+            <input type="hidden" name="token" id="token" value="{{data.token}}"/>
+            <div class="user-box">
+            <input type="text" name="otp"><label for="">Enter OTP</label></div>
+            <button type="submit">Submit</button>
+        </form>
+    <p>Please verify your face before clicking submit</p>
+    </div>
+        <script src="" async defer></script>
+    </body>
+</html>

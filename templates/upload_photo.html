@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+  <body>
+    <div class="login-box">
+      <div class="user-box">
+    <video id="video" width="320" height="240" autoplay></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+  
+  </div>
+    <form id="submit_form" enctype='multipart/form-data' action="{{ url_for(data.hereFor) }}" method="post">
+      <input type="hidden" name="captured_image" id="captured_image" />
+      <input type="hidden" name="user" id="user" value="{{data.user}}"/>
+      <input type="hidden" name="token" id="token" value="{{data.token}}"/>
+      <center><button onmousedown="capture()" >Capture photo</button></center>
+    </div>
+    </form>
+    <br>
+    <br>
+    
+    <script type="text/javascript">
+        const video = document.querySelector("#video");
+        const canvas = document.querySelector("#canvas");
+        const context = canvas.getContext("2d");
+
+        video.setAttribute('autoplay', '');
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+  
+        // Access user's camera
+        if (navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+              video.srcObject = stream;
+            })
+            .catch(function (error) {
+              console.log("Something went wrong!", error);
+            });
+        }
+  
+        function capture() {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+          document.querySelector("#captured_image").value = canvas.toDataURL();
+          document.querySelector("#submit_form").submit();
+        }
+      </script>
+  </body>
+</html>
