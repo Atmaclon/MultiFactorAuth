@@ -17,9 +17,9 @@ from datetime import datetime
 import pytz
 
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///database.db'
-app.config['SECRET_KEY']= 'amongussus'
+app.config['SECRET_KEY']= 'SUPER SECRET KEY THAT I TOTALLY DIDNT CHANGE'
 db=SQLAlchemy(app)
-app.secret_key = 'amongussus'
+app.secret_key = 'SUPER SECRET KEY THAT I TOTALLY DIDNT CHANGE'
 hostname=socket.gethostname()
 #hostip=socket.gethostbyname(hostname)
 hostip="192.168.0.103"
@@ -55,8 +55,8 @@ def generateOTP():
     return random.randrange(10000,99999)
 
 def getOTPApi(number,username,token):
-    account_sid = 'AC78eecd157484992ef11db08707966a9d'
-    auth_token = '5b70233fe04cbce13cc7e7ee7e43937b'
+    account_sid = 'HELLOTHERE'
+    auth_token = 'IF YOURE LOOKING AT THIS HAVE A GREAT DAY :)'
     client= Client(account_sid, auth_token)
     otp = generateOTP()
     
